@@ -37,6 +37,20 @@ const experiences = [
       { label: 'Email Automation', text: 'Designed and launched automated email marketing campaigns through Mailchimp to streamline lead nurturing and engagement.' },
     ],
   },
+  {
+    role: 'Sales Development Representative',
+    company: 'RevHires',
+    period: 'May 2026 – Present',
+    location: 'United States · Remote',
+    isCurrent: true,
+    bullets: [
+      { label: 'Lead Pipeline Management', text: 'Organize and track all incoming leads inside GoHighLevel (GHL) to make sure no prospect falls through the cracks.' },
+      { label: 'CRM Hygiene', text: 'Maintain and clean the CRM database regularly by updating lead information, removing duplicates, and ensuring data accuracy.' },
+      { label: 'Lead Qualification', text: 'Assess and qualify incoming leads to ensure only high-intent prospects reach the closing team, saving the company time and resources.' },
+      { label: 'Customer Outreach', text: 'Manage daily follow-ups via messages and calls, ensuring active engagement with potential clients.' },
+      { label: 'Appointment Booking', text: 'Act as the primary point of contact to schedule discovery calls, ensuring a smooth handoff to the closing team.' },
+    ],
+  },
 ]
 
 function ArrowCard({ exp, index, total }) {
@@ -69,6 +83,9 @@ function ArrowCard({ exp, index, total }) {
           <h3 className="text-base font-bold text-zinc-800 dark:text-white leading-snug">{exp.role}</h3>
           <div className="flex flex-col gap-0.5">
             <p className="text-sm font-medium text-zinc-500 dark:text-zinc-400">{exp.company}</p>
+            {exp.location && (
+              <span className="text-xs text-zinc-400 dark:text-zinc-500">{exp.location}</span>
+            )}
             <span className="text-xs text-zinc-400 dark:text-zinc-500">{exp.period}</span>
           </div>
         </div>
@@ -118,6 +135,9 @@ function ArrowCard({ exp, index, total }) {
                 )}
                 <h3 className="text-lg md:text-xl font-bold text-zinc-800 dark:text-white leading-snug">{exp.role}</h3>
                 <p className="mt-0.5 text-sm font-medium text-zinc-500 dark:text-zinc-400">{exp.company}</p>
+                {exp.location && (
+                  <p className="mt-0.5 text-xs text-zinc-400 dark:text-zinc-500">{exp.location}</p>
+                )}
               </div>
               <span className="text-xs text-zinc-400 dark:text-zinc-500 whitespace-nowrap mt-1">{exp.period}</span>
             </div>
