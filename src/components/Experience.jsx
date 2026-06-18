@@ -53,10 +53,9 @@ const experiences = [
   },
 ]
 
-function ArrowCard({ exp, index, total }) {
+function ArrowCard({ exp, index }) {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-60px' })
-  const isLast = index === total - 1
 
   return (
     <motion.div
@@ -112,9 +111,7 @@ function ArrowCard({ exp, index, total }) {
         <div
           className="relative overflow-visible"
           style={{
-            clipPath: isLast
-              ? 'polygon(0% 0%, 100% 0%, 100% 100%, 50% 88%, 0% 100%)'
-              : 'polygon(0% 0%, 100% 0%, 100% 82%, 50% 100%, 0% 82%)',
+            clipPath: 'polygon(0% 0%, 100% 0%, 100% 82%, 50% 100%, 0% 82%)',
           }}
         >
           <div
@@ -189,14 +186,23 @@ export default function Experience() {
 
         <div className="flex flex-col gap-4 md:hidden">
           {experiences.map((exp, index) => (
-            <ArrowCard key={exp.company} exp={exp} index={index} total={experiences.length} />
+            <ArrowCard key={exp.company} exp={exp} index={index} />
           ))}
         </div>
 
         <div className="hidden md:flex flex-col-reverse gap-0">
           {experiences.map((exp, index) => (
-            <div key={exp.company} className={index < experiences.length - 1 ? '-mb-12' : ''}>
-              <ArrowCard exp={exp} index={index} total={experiences.length} />
+            <div
+              key={exp.company}
+              className={
+                index === experiences.length - 2
+                  ? '-mb-12 -mt-20'
+                  : index < experiences.length - 1
+                    ? '-mb-12'
+                    : ''
+              }
+            >
+              <ArrowCard exp={exp} index={index} />
             </div>
           ))}
         </div>
